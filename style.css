@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    display: flex; 
+    width: 80vw;
+}
+
+.panel {
+    background-size: auto 100%; 
+    /* ^^^ hace que cada panel se vea el 100% de la foto independientemente del tamano del panel */
+    background-position: center;
+    /* ^^^ posiciona la foto en el centro */
+    background-repeat: no-repeat;
+    /* ^^^ si no especificas esto, probably la foto se repetira en mosaico en cada panel y lo acabo de confirmar que asi es*/
+    height: 80vh;
+    /* ^^^ This is the height of each panel */
+    border-radius: 50px;
+    /* This is rounded borders */
+    color: #fff;
+    /* Behind the image white color is placed */
+    cursor: pointer;
+    /* This is the link hand cursos, indicates its a clickable element */
+    flex: 0.5;
+    /*  used within a flex container to specify how a flex item should grow or shrink to fill the available space along the main axis */
+    /* If flex is set to 5, every element wont shrink in this case, higher numbers make it bigger each panel */
+    margin: 10px;
+    /* Its the margin between each of the panels, set to 0 and there's no space */
+    position: relative;
+    transition: flex 0.7s ease-in;
+    /* ease in, out is the movements, ease in: starts fast and deaccelerates. ease out and in/out are 2 different movements, try   */
+    background-clip: padding-box;
+
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+}
+
+.panel.active {
+    flex: 5;
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media(max-width: 480px) {
+    .container {
+        width: 100vw;
+    } 
+    .panel:nth-of-type(4), 
+    .panel:nth-of-type(5) {
+        display: none;
+    }
+
+}
